@@ -1,4 +1,6 @@
 document.getElementById("search-btn").addEventListener("click", function() {
+    const spinner = document.getElementById("spinner-border")
+    spinner.style.display = "block"
     const input = document.getElementById("search-input");
     const inputValue = input.value;
     const p = document.getElementById("p");
@@ -9,14 +11,20 @@ document.getElementById("search-btn").addEventListener("click", function() {
         fetch(url)
             .then(res => res.json())
             .then(data => {
+                const spinner = document.getElementById("spinner-border")
+                spinner.style.display = "block"
                 console.log(data)
                 if (data.meals === null) {
-                    p.innerText = "No items are found"
+                    p.innerText = "No items are found!"
+                    const spinner = document.getElementById("spinner-border")
+                    spinner.style.display = "none"
                 } else {
                     loadMeal(data.meals)
                 }
             });
         const loadMeal = (meals) => {
+            const spinner = document.getElementById("spinner-border")
+            spinner.style.display = "none"
             for (const meal of meals) {
                 const creatDiv = document.createElement("div");
                 creatDiv.classList.add("col-12");
@@ -41,7 +49,7 @@ document.getElementById("search-btn").addEventListener("click", function() {
         input.value = "";
         p.innerText = "";
     } else {
-        p.innerText = "Please enter a string";
+        p.innerText = "Please enter a string!";
         div.innerHTML = '';
         input.value = "";
     }
@@ -76,3 +84,10 @@ const defaultFunction = (meals) => {
         div.appendChild(creatDiv);
     }
 }
+
+
+// 
+
+// const loading = () => {
+//     spinner.style.display = "none";
+// }
