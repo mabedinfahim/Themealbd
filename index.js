@@ -22,6 +22,8 @@ document.getElementById("search-btn").addEventListener("click", function() {
             });
         const loadMeal = (meals) => {
             for (const meal of meals) {
+                const spinner = document.getElementById("spinner-border")
+                spinner.style.display = "none"
                 const creatDiv = document.createElement("div");
                 creatDiv.classList.add("col-12");
                 creatDiv.classList.add("col-md-6");
