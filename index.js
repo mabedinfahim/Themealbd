@@ -11,8 +11,6 @@ document.getElementById("search-btn").addEventListener("click", function() {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                const spinner = document.getElementById("spinner-border")
-                spinner.style.display = "block"
                 console.log(data)
                 if (data.meals === null) {
                     p.innerText = "No items are found!"
@@ -23,8 +21,6 @@ document.getElementById("search-btn").addEventListener("click", function() {
                 }
             });
         const loadMeal = (meals) => {
-            const spinner = document.getElementById("spinner-border")
-            spinner.style.display = "none"
             for (const meal of meals) {
                 const creatDiv = document.createElement("div");
                 creatDiv.classList.add("col-12");
@@ -58,7 +54,6 @@ document.getElementById("search-btn").addEventListener("click", function() {
 })
 
 
-
 const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=fish`
 fetch(url)
     .then(res => res.json())
@@ -85,4 +80,9 @@ const defaultFunction = (meals) => {
             `
         div.appendChild(creatDiv);
     }
+}
+
+const spinner = document.getElementById("spinner-border")
+const loading = () => {
+    spinner.style.display = "none"
 }
