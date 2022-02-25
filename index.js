@@ -49,6 +49,8 @@ document.getElementById("search-btn").addEventListener("click", function() {
         input.value = "";
         p.innerText = "";
     } else {
+        const spinner = document.getElementById("spinner-border")
+        spinner.style.display = "none"
         p.innerText = "Please enter a string!";
         div.innerHTML = '';
         input.value = "";
@@ -84,10 +86,3 @@ const defaultFunction = (meals) => {
         div.appendChild(creatDiv);
     }
 }
-
-
-// 
-
-// const loading = () => {
-//     spinner.style.display = "none";
-// }
